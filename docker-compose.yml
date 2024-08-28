@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     build: .
-    container_name: django_web
+    container_name: weather_api_wrapper
     command: >
       bash -c "python manage.py migrate &&
                python manage.py collectstatic --noinput &&
