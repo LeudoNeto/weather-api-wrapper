@@ -10,11 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 from cities_list import CITIES_LIST
 
 LEN_CITIES_LIST = len(CITIES_LIST)
+
+load_dotenv('.env')
+
+OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
