@@ -13,12 +13,12 @@ class CollectWeatherData(APIView):
         if not user_defined_id:
             return Response({"error": "ID is required"}, status=status.HTTP_400_BAD_REQUEST)
 
-        if WeatherData.objects.filter(id=id).exists():
+        if WeatherData.objects.filter(user_defined_id=user_defined_id).exists():
             return Response({"error": "ID already exists"}, status=status.HTTP_400_BAD_REQUEST)
 
-        fetch_weather_data.delay(id)
+        fetch_weather_data.delay(user_defined_id)
 
-        return Response({"message": "Data collection initiated", "id": str(id)}, status=status.HTTP_202_ACCEPTED)
+        return Response({"message": "Data collection initiated", "id": user_defined_id}, status=status.HTTP_202_ACCEPTED)
 
 
 class CheckProgress(APIView):
