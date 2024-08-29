@@ -16,6 +16,28 @@ The project utilizes the following technologies: Back-End in Python and Django, 
 
 ![Sequence Diagram](doc_images/sequence_diagram.png)
 
+### Explanation of Decisions
+
+1. **Back-End in Python and Django**:
+   - **Python**: Python is a versatile and popular programming language known for its readability and ease of use. It has a vast ecosystem of libraries and frameworks, making it a strong choice for back-end development.
+   - **Django**: Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It comes with built-in features like an ORM (Object-Relational Mapping), authentication, and an admin panel, which speeds up development and reduces the need for external dependencies.
+
+2. **SQLite Database**:
+   - **SQLite**: SQLite is a lightweight, file-based database that is easy to set up and requires no separate server process. It's an excellent choice for projects that don’t require the complexity of a full-fledged database like PostgreSQL or MySQL, making it ideal for smaller projects or development environments.
+
+3. **Celery for Asynchronous Tasks**:
+   - **Celery**: Celery is a distributed task queue that allows you to run background jobs asynchronously, which is useful for tasks that are time-consuming and do not need to be completed immediately (e.g., sending emails, processing data). It helps improve the performance and responsiveness of your application by offloading these tasks.
+
+4. **Redis as the Message Broker**:
+   - **Redis**: Redis is an in-memory data structure store that is often used as a message broker for Celery. Its speed and efficiency make it ideal for handling the communication between Celery workers and the application, ensuring that tasks are managed effectively.
+
+5. **AWS EC2 Instance for Hosting**:
+   - **AWS EC2**: Amazon Web Services (AWS) EC2 is a scalable cloud computing service that allows you to run virtual servers on demand. Hosting your project on an EC2 instance provides flexibility, scalability, and reliability. The use of an Amazon Linux OS on EC2 is cost-effective and optimized for performance within AWS infrastructure.
+
+6. **Docker and Docker Compose**:
+   - **Docker**: Docker is a platform that allows you to package applications and their dependencies into containers. This ensures that the application runs consistently across different environments, from development to production, by isolating it from system-specific issues.
+   - **Docker Compose**: Docker Compose is used for defining and running multi-container Docker applications. It simplifies the orchestration of your project’s services (e.g., Django, Celery, Redis) by managing them through a single configuration file, making deployment and scaling more straightforward.
+
 ## Project Structure
 
 - **`weather_api_wrapper/`**: Main directory of the Django project.
