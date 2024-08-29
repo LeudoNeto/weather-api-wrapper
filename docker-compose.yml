@@ -3,9 +3,9 @@ version: '3.8'
 services:
   web:
     build: .
+    container_name: weather_api_wrapper
     command: >
       bash -c "python manage.py migrate &&
-               python manage.py collectstatic --noinput &&
                python manage.py runserver 0.0.0.0:3000"
     volumes:
       - .:/app
