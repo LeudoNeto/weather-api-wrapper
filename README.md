@@ -64,6 +64,47 @@ The project utilizes the following technologies: Back-End in Python and Django, 
      OPEN_WEATHER_API_KEY={your_api_key}
      ```
 
+---
+
+## Docker Installation
+
+### On Ubuntu
+
+```bash
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+sudo systemctl status docker
+docker --version
+```
+
+ **Optional: Add Your User to the Docker Group (to run Docker commands without `sudo`):**
+
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
+
+   You will need to log out and log back in for this change to take effect.
+
+### On Amazon Linux
+
+```bash
+sudo yum update -y
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo docker --version
+sudo service docker status
+```
+
+**Add Your User to the Docker Group (to run Docker commands without `sudo`):**
+
+```bash
+sudo usermod -aG docker $USER
+```
+
 ## Running the Application
 
 ### Prerequisites:
