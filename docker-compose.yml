@@ -30,3 +30,11 @@ services:
     image: redis:6-alpine
     ports:
       - "6379:6379"
+
+  test:
+    build: .
+    command: coverage run manage.py test && coverage report --fail-under=90
+    volumes:
+      - .:/app
+    depends_on:
+      - web
