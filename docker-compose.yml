@@ -3,20 +3,30 @@ version: '3.8'
 services:
   web:
     build: .
-    container_name: weather_api_wrapper
     command: >
       bash -c "python manage.py migrate &&
                python manage.py collectstatic --noinput &&
                python manage.py runserver 0.0.0.0:3000"
     volumes:
       - .:/app
-    working_dir: /app
-    env_file:
-      - .env
     ports:
       - "3000:3000"
-    networks:
-      - webnet
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
 
-networks:
-  webnet:
+  celery:
+    build: .
+    command: celery -A weather_api_wrapper worker --loglevel=info --concurrency=1 -E
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
