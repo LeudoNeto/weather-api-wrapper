@@ -142,8 +142,14 @@ After that, your project will be available at `http://127.0.0.1:3000`
 
 ### Running Tests
 
-To run the unit tests on the project's API, execute the following command while the application is running:
+To run the unit tests on the project's API, execute the following command:
 
 ```bash
-sudo docker exec weather_api_wrapper python3 manage.py test
+sudo docker-compose run test
+```
+
+To see the coverage report (with flag to fail if coverage < 90%)
+
+```bash
+sudo docker exec weather_api_wrapper coverage report --fail-under=90
 ```
