@@ -4,7 +4,7 @@
 
 This Django project is designed for a technical test by DevGrid and includes a web application that collects data from the Open Weather API.
 
-- To use the application: `http://3.142.140.39:3000/`
+- To use the application: `http://18.116.72.214:3000/`
 
 - The API documentation with Swagger is available on the application's index page.
 
